@@ -1,0 +1,38 @@
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        
+        Arrays.sort(arr);
+
+        
+     for(int i = 0; i < arr.length; i++){
+         int a = func(arr[i], arr);
+         if(a != i && a >= 0) return true;
+     }
+        
+        return false;
+    }  
+    
+        public int func(int t, int[] arr){
+            
+            int i = 0;
+            int j = arr.length-1;
+            
+            while(i <= j){
+                
+                int mid = i + (j-i)/2;
+                
+                if(arr[mid] == 2*t){
+                    return mid;
+                }else if(arr[mid] < 2*t){
+                    i = mid + 1;
+                }else{
+                    j = mid-1;
+                }
+                
+                
+            }
+            
+            return -1;
+        }
+        
+}
